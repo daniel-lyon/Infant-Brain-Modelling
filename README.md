@@ -1,2 +1,2 @@
 # Infant-Brain-Modelling
-Using software to model electroencephalograms for infants
+Using the Python programming language to model electroencephalograms of infants
