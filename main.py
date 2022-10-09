@@ -37,7 +37,7 @@ plt.xscale('log')
 plt.xlim(0, 10**2.1)
 plt.ylabel('Power')
 plt.xlabel('Frequency')
-plt.savefig('Signal Spectrum', dpi = 200)
+plt.savefig('Plots/Mean 18-28 Signal Spectrum', dpi = 200)
 plt.show()
 
 # Stability Plot
@@ -49,7 +49,7 @@ plt.ylabel('Imaginary')
 plt.xlabel('Real')
 plt.xlim(-stab_range, stab_range)
 plt.ylim(-stab_range, stab_range)
-plt.savefig('Stability Plot', dpi = 200)
+plt.savefig('Plots/Mean 18-28 Stability Plot', dpi = 200)
 plt.show() 
 
 # List of all ages
@@ -93,7 +93,7 @@ plt.xscale('log')           # and this one too
 # plt.ylim(0, 0.007)        # too to zoom in to an area of interest
 plt.ylabel('Power')
 plt.xlabel('Frequency')
-plt.savefig('Ages Signal Spectrum', dpi = 200)
+plt.savefig('Plots/Ages Signal Spectrum', dpi = 200)
 plt.show()
 
 # Stability Plots for given age ranges and mean 18-28
@@ -110,7 +110,7 @@ plt.ylabel('Imaginary')
 plt.xlabel('Real')
 plt.xlim(-stab_range, stab_range)
 plt.ylim(-stab_range, stab_range)
-plt.savefig('Ages Stability Plot', dpi = 200)
+plt.savefig('Plots/Ages Stability Plot', dpi = 200)
 plt.show()
 
 ages.pop(-1)        # Remove "mean 18-28" because its not a number (-1 = END)
@@ -171,4 +171,4 @@ for index, age_area in enumerate(all_areas):
 # Plot the figure and save
 plt.setp(axs, xticks = [3,6,9,12])
 plt.show()
-fig.savefig('Percentage Plot', dpi = 200)
+fig.savefig('Plots/Percentage Plot', dpi = 200)
