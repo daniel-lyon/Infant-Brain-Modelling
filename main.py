@@ -35,8 +35,8 @@ plt.title('Mean 18-28 Signal Spectrum')
 plt.yscale('log')
 plt.xscale('log')
 plt.xlim(0, 10**2.1)
-plt.ylabel('Power')
-plt.xlabel('Frequency')
+plt.ylabel('Power ($\mathregular{\mu V^{2}}$ $\mathregular{Hz^{-1}}$)')
+plt.xlabel('Frequency (Hz)')
 plt.savefig('Plots/Mean 18-28 Signal Spectrum', dpi = 200)
 plt.show()
 
@@ -91,8 +91,8 @@ plt.yscale('log')           # Comment out this line
 plt.xscale('log')           # and this one too
 # plt.xlim(3, 12)           # with these uncommented
 # plt.ylim(0, 0.007)        # too to zoom in to an area of interest
-plt.ylabel('Power')
-plt.xlabel('Frequency')
+plt.ylabel('Power ($\mathregular{\mu V^{2}}$ $\mathregular{Hz^{-1}}$)')
+plt.xlabel('Frequency (Hz)')
 plt.savefig('Plots/Ages Signal Spectrum', dpi = 200)
 plt.show()
 
