@@ -65,16 +65,36 @@ stab_outputs = []
 
 # Data for the given age range
 for age in ages:
+
+    # # In Use Lower Error
+    # alpha = -16*age+180
+    # gamma_e = 1*age+39
+    # t_0 = (-5*age+100)/1000
+    # G_ee = -0.17*age+4.9
+    # G_ei = 0.10*age-10.8
+    # G_ese = -0.01*age+10.3
+    # G_esre = 0.1*age-11
+    # G_srs = -0.006*age-0.26
     
-    # Variables as a function of age
-    alpha = -12*age+180                 # -12*age+180 
-    gamma_e = 1.4*age+43                # 1.4*age+43
-    t_0 = (-4*age+104)/1000             # (-4*age+104)/1000 
-    G_ee = -0.14*age+5.4                # 0.14*age+5.4 
-    G_ei = 0.17*age-10.1                # 0.17*age-10.1
-    G_ese = 0.01*age+10.9               # 0.01*age+10.9 
-    G_esre = 0.2*age-9                  # 0.2*age-9      
-    G_srs = -0.005*age-0.21             # -0.22*age+1.5
+    # # Variables as a function of age in use
+    alpha = -12*age+180
+    gamma_e = 1.4*age+43
+    t_0 = (-4*age+104)/1000
+    G_ee = -0.14*age+5.4
+    G_ei = 0.17*age-10.1
+    G_ese = 0.01*age+10.9
+    G_esre = 0.2*age-9
+    G_srs = -0.005*age-0.21
+
+    # # In Use Upper Error
+    # alpha = -8*age+200
+    # gamma_e = 1.8*age+47
+    # t_0 = (-3*age+108)/1000
+    # G_ee = -0.11*age+5.9
+    # G_ei = 0.24*age-9.4
+    # G_ese = 0.03*age+11.5
+    # G_esre = 0.3*age-7
+    # G_srs = -0.004*age-0.16
         
     sig_y, stab_x, stab_y = equation8(alpha, gamma_e, t_0, G_ee, G_ei, G_ese, G_esre, G_srs)
     sign_outputs.append(sig_y)
@@ -146,7 +166,7 @@ for age in ages:
     all_areas.append(age_area)
 
 # X-axis values to plot the bar graph on
-x_values = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+x_values = [i for i in range(3,12)]
 
 # Create figure with a subplot for each age
 fig, axs = plt.subplots(1, 11, sharey=True, tight_layout=True)
@@ -172,3 +192,43 @@ for index, age_area in enumerate(all_areas):
 plt.setp(axs, xticks = [3,6,9,12])
 plt.show()
 fig.savefig('Plots/Percentage Plot', dpi = 200)
+
+# Ages 0 to 10 list
+age = np.linspace(0, 10, 11)
+
+# Functions to plot
+alpha = -12*age+180
+gamma_e = 1.4*age+43
+t_0 = (-4*age+104)/1000
+G_ee = -0.14*age+5.4
+G_ei = 0.17*age-10.1
+G_ese = 0.01*age+10.9
+G_esre = 0.2*age-9
+G_srs = -0.005*age-0.21
+
+# New colour map to plot
+colours = plt.cm.cool(np.linspace(0, 1, 8))
+
+# Parameter evolution plot - alpha and gamma together as they change the most
+plt.plot(age, alpha, color = colours[0])
+plt.plot(age, gamma_e, color = colours[7])
+plt.title('Evolution of parameter values with age')
+plt.ylabel('Parameter Value')
+plt.xlabel('Age')
+plt.legend([r'$\alpha}$', '$\gamma_e$'])
+plt.savefig('Plots/Age Trend 1')
+plt.show()
+
+# Second parameter evolution plot
+plt.plot(age, t_0, color = colours[1])
+plt.plot(age, G_ee, color = colours[2])
+plt.plot(age, G_ei, color = colours[3])
+plt.plot(age, G_ese, color = colours[4])
+plt.plot(age, G_esre, color = colours[5])
+plt.plot(age, G_srs, color = colours[6])
+plt.title('Evolution of parameter values with age')
+plt.ylabel('Parameter Value')
+plt.xlabel('Age')
+plt.legend(['${t_0}$', '$G_{ee}$', '$G_{ei}$', '$G_{ese}$', '$G_{esre}$', '$G_{srs}$',], loc = 'upper right')
+plt.savefig('Plots/Age Trend 2')
+plt.show()
